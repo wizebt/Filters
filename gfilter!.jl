@@ -1,4 +1,8 @@
+"""
+    gfilter(I::Array{Float32,2}) -> gaussian filtered 
 
+Fast gaussian 5x5 filtering
+"""
 function gfilter(I::Array{Float32,2}) # 5x5
     h, w = size(I)
     n = h * w
