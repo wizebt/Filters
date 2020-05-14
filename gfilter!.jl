@@ -1,7 +1,7 @@
 """
     gfilter(I::Array{Float32,2}) -> gaussian filtered 
 
-Fast gaussian 5x5 filtering
+Fast gaussian 5x5 filtering, using separation and kernel folding.
 """
 function gfilter(I::Array{Float32,2}) # 5x5
     h, w = size(I)
@@ -16,7 +16,7 @@ function gfilter(I::Array{Float32,2}) # 5x5
     for i = 3:n-2
         @inbounds J[i] = I[i]a + (I[i-1] + I[i+1])b + (I[i-2] + I[i+2])c
     end
-    return J
+
     K = Array{Float32,2}(undef, h, w)
     h2 = h << 1
     for i = 1+h2:n-h2
